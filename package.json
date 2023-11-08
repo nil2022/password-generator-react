@@ -1,7 +1,7 @@
 {
   "name": "05passwordgenerator",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -25,5 +25,20 @@
     "postcss": "^8.4.31",
     "tailwindcss": "^3.3.5",
     "vite": "^4.4.5"
-  }
+  },
+  "description": "This template is a Web Application build using React with Vite",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nil2022/password-generator-react.git"
+  },
+  "keywords": [
+    "react",
+    "tailwindcss"
+  ],
+  "author": "Nilanjan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nil2022/password-generator-react/issues"
+  },
+  "homepage": "https://github.com/nil2022/password-generator-react#readme"
 }
