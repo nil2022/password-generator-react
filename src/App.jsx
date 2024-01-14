@@ -38,7 +38,7 @@ function App() {
     for (let i = 1; i <= length; i++) {
       
       // Generate a random index between 0 and i (inclusive)
-      const randomIndex = Math.floor(Math.random() * str.length + 1);
+      const randomIndex = Math.floor(Math.random() * str.length );
       // Storing each character of array to form a single string
       pass += str.charAt(randomIndex)
     }
