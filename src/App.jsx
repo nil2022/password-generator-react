@@ -31,14 +31,14 @@ function App() {
     let pass = ''
 
     if(numAllowed) str += "0123456789"
-    if(charAllowed) str += "!#$%&*+-.:;<=>?@^_`|~"
+    if(charAllowed) str += "!@#$%&?_~"
     if(lowerCaseAlpha) str += "abcdefghijklmnopqrstuvwxyz"
     if(upperCaseAlpha) str += "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
     for (let i = 1; i <= length; i++) {
       
       // Generate a random index between 0 and i (inclusive)
-      const randomIndex = Math.floor(Math.random() * str.length + 1);
+      const randomIndex = Math.floor(Math.random() * str.length );
       // Storing each character of array to form a single string
       pass += str.charAt(randomIndex)
     }
