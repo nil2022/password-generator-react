@@ -31,7 +31,7 @@ function App() {
     let pass = ''
 
     if(numAllowed) str += "0123456789"
-    if(charAllowed) str += "!#$%&*+-.:;<=>?@^_`|~"
+    if(charAllowed) str += "!@#$%&?_~"
     if(lowerCaseAlpha) str += "abcdefghijklmnopqrstuvwxyz"
     if(upperCaseAlpha) str += "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
