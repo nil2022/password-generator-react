@@ -7,15 +7,16 @@ function App() {
   // this hook is used to check whether numbers is checked or not and to update in generator function 
   const [numAllowed, setNumAllowed] = useState(true)
   // this hook is used to check whether characters is checked or not and to update in generator function 
-  const [charAllowed, setCharAllowed] = useState(false)
+  const [charAllowed, setCharAllowed] = useState(true)
   // this hook is used to set password and to update in generator function 
   let [password, setPassword] = useState('')
   // HoOk for small alphabets
-  let [lowerCaseAlpha, setLowerCaseAlpha] = useState(false)
+  let [lowerCaseAlpha, setLowerCaseAlpha] = useState(true)
   // HoOk for Big Alphabets
-  let [upperCaseAlpha, setUpperCaseAlpha] = useState(false)
+  let [upperCaseAlpha, setUpperCaseAlpha] = useState(true)
 
   // useRef Hook
+  // to hold the reference of current object (password)
   const passwordRef = useRef(null)
 
   // function to copy generated password 
@@ -31,7 +32,7 @@ function App() {
     let pass = ''
 
     if(numAllowed) str += "0123456789"
-    if(charAllowed) str += "!@#$%&?_~"
+    if(charAllowed) str += "!@#$%&?_"
     if(lowerCaseAlpha) str += "abcdefghijklmnopqrstuvwxyz"
     if(upperCaseAlpha) str += "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
@@ -53,11 +54,12 @@ function App() {
   }, [length, numAllowed, charAllowed, lowerCaseAlpha, upperCaseAlpha, passwordGenerator])
 
   return (
-    <>
-      <div className='relative w-full max-w-[600px] h-[220px] text-center mx-auto shadow-md rounded-lg px-4 my-52 text-orange-500 bg-gray-800 font-[Poppins]'>
+    <> 
+      {/* OUTSIDE WRAPPER */}
+      <div className='relative w-full max-w-[650px] h-[420px] sm:h-[220px] text-center mx-auto shadow-md rounded-lg px-4 my-52 text-orange-500 bg-gray-800 font-[Poppins]'>
         <p className='text-white text-[25px] text-center pt-4 my-3 font-semibold'>Password Generator</p>
         {/* Password field and Copy button */}
-        <div className='flex shadow rounded-lg overflow-hidden '>
+        <div className='flex shadow rounded-lg overflow-hidden w-full '>
             <input
               type='text'
               value={password}
@@ -73,12 +75,12 @@ function App() {
               
         </div>
         {/* Length Slider, Number, Alphabets & Character Checkboxes */}
-        <div className='flex text-sm gap-x-4 my-4'>
-          <div className='flex flex-col items-center gap-x-2'>
+        <div className='flex flex-col sm:flex-row items-center justify-center text-sm gap-x-4 my-4'>
+          <div className='flex flex-col font-medium items-center gap-x-z'>
             <input
               type='range'
               min={4}
-              max={50}
+              max={24}
               value={length}
               className='cursor-pointer'
               onChange={(e) => {setLength(e.target.value)}} // on moving slider, updates length value
@@ -86,7 +88,7 @@ function App() {
             <label>Length: {length}</label>
           </div>
           {/* Checkbox for Numbers */}
-          <div className='flex items-center gap-x-1'>
+          <div className='flex items-center font-medium gap-x-2 py-2 px-2 my-2 bg-gray-700 rounded-full hover:cursor-pointer'>
           <input
               type='checkbox'
               defaultChecked={numAllowed}
@@ -95,10 +97,11 @@ function App() {
                   setNumAllowed((prev) => !prev)
               }}
           />
-          <label htmlFor='numberInput'>Numbers</label>
+          <label htmlFor='numberInput'
+          className='hover:cursor-pointer'>Numbers</label>
           </div>
           {/* Checkbox for Characters */}
-          <div className='flex items-center gap-x-1'>
+          <div className='flex items-center font-medium gap-x-2 py-2 px-2 my-2 bg-gray-700 rounded-full hover:cursor-pointer'>
           <input
               type='checkbox'
               defaultChecked={charAllowed}
@@ -107,10 +110,11 @@ function App() {
                   setCharAllowed((prev) => !prev)
               }}
           />
-          <label htmlFor='charInput'>Characters</label>
+          <label htmlFor='charInput'
+          className='hover:cursor-pointer'>Characters</label>
           </div>
           {/* Checkbox for Lowercase Alphabets */}
-          <div className='flex items-center gap-x-1'>
+          <div className='flex items-center font-medium gap-x-2 py-2 px-2 my-2 bg-gray-700 rounded-full hover:cursor-pointer'>
           <input
               type='checkbox'
               defaultChecked={lowerCaseAlpha}
@@ -119,10 +123,11 @@ function App() {
                   setLowerCaseAlpha((prev) => !prev)
               }}
           />
-          <label htmlFor='lowercaseAlphaInput'>Lowercase</label>
+          <label htmlFor='lowercaseAlphaInput'
+          className='hover:cursor-pointer'>Lowercase</label>
           </div>
           {/* Checkbox for Uppercase Alphabets */}
-          <div className='flex items-center gap-x-1'>
+          <div className='flex items-center font-medium gap-x-2 py-2 px-2 my-2 bg-gray-700 rounded-full hover:cursor-pointer'>
           <input
               type='checkbox'
               defaultChecked={upperCaseAlpha}
@@ -131,14 +136,15 @@ function App() {
                   setUpperCaseAlpha((prev) => !prev)
               }}
           />
-          <label htmlFor='uppercaseAlphaInput'>Uppercase</label>
+          <label htmlFor='uppercaseAlphaInput'
+          className='hover:cursor-pointer'>Uppercase</label>
           </div>
         </div>
         {/* Generate button */}
         <div>
           <button
-            className='text-xl font-bold bg-slate-300 px-3 rounded-full shadow-xl hover:bg-green-800 transition-all
-            duration-300 hover:text-white hover:border hover:border-white'
+            className='text-xl font-bold bg-slate-300 px-3 rounded-full shadow-xl hover:bg-orange-400 transition-all
+            duration-500 hover:text-orange-700 hover:border-2 hover:border-white '
             onClick={passwordGenerator}
             >Generate Password</button>
         </div>
